@@ -16,16 +16,12 @@ Antes de começar, vamos organizar nosso setup.
 ### Tema da Aula
 Código Limpo II - S.O.L.I.D.
 
-O que veremos na aula de hoje?
-- [Tema da Aula](#codigo-limpo-II-S.O.L.I.D.)
-  
-
 ### Exercícios 
 * [Exercicio para sala](/exercicios/para-sala/)
 * [Exercicio para casa](/exercicios/para-casa/)
 
 ### Material da aula 
-* [Notion](https://notion.so/)
+* [Notion](https://muddy-estimate-da7.notion.site/C-digo-limpo-2-S-O-L-I-D-a19cffc34e4c465dafffceb04cc88d70?pvs=4)
 
 
 

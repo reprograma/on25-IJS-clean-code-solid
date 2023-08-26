@@ -23,9 +23,14 @@ class Product {
 
 Refatore-a de maneira a respeitar o princípio da Responsabilidade Única. Crie outras classes se necessário.
 
+<<<<<<< HEAD:exercicios/para-sala/exercicio-em-aula.md
 2. Considere o código (em Typescript) abaixo:
 
 ```js
+=======
+2. Considere o código abaixo:
+```
+>>>>>>> c0e6817ee8082d341a4c4a6ad95e4bfbf2f81564:exercicios/Exercicio complementar para-casa/exercicio-em-aula.md
 export enum ResourceType {
     TIME_SLOT,
     SPACE_SLOT
@@ -35,15 +40,21 @@ class Resource {
     id: number;
     type: ResourceType;
 
-    constructor(id: number, type: ResourceType) {
+    constructor(id, type) {
       this.id = id;
       this.type = type;
     }
 }
 
+<<<<<<< HEAD:exercicios/para-sala/exercicio-em-aula.md
 class ResourceAllocator {
 
     allocate(resource: Resource) {
+=======
+class ResourceAllocator {    
+  
+    allocate(resource) {
+>>>>>>> c0e6817ee8082d341a4c4a6ad95e4bfbf2f81564:exercicios/Exercicio complementar para-casa/exercicio-em-aula.md
         switch (resource.type) {
             case ResourceType.TIME_SLOT:
                 this.findFreeTimeSlot();
@@ -58,7 +69,7 @@ class ResourceAllocator {
         }
     }
 
-    free(resource: Resource) {
+    free(resource) {
         switch (resource.type) {
             case ResourceType.TIME_SLOT:
                 this.markTimeSlotFree(resource.id);
@@ -71,32 +82,32 @@ class ResourceAllocator {
         }
     }
 
-    private findFreeSpaceSlot()
+     findFreeSpaceSlot()
     {
         console.log("Encontrei um espaço livre");
     }
 
-    private findFreeTimeSlot()
+     findFreeTimeSlot()
     {
         console.log("Encontrei um tempo livre");
     }
 
-    private markSpaceSlotFree(resourceId: number)
+     markSpaceSlotFree(resourceId)
     {
         console.log("Encontrei um espaço ocupado");
     }
 
-    private markTimeSlotFree(resourceId: number)
+    private markTimeSlotFree(resourceId)
     {
         console.log("Liberei um tempo ocupado");
     }
 
-    private markSpaceSlotBusy(resourceId: number)
+     markSpaceSlotBusy(resourceId)
     {
         console.log("Ocupei um espaço livre");
     }
 
-    private markTimeSlotBusy(resourceId: number)
+     markTimeSlotBusy(resourceId)
     {
         console.log("Ocupei um tempo livre");
     }
@@ -105,9 +116,14 @@ class ResourceAllocator {
 
 Refatore o código de maneira a respeitar o princípio Aberto-Fechado. Crie outras classes se necessário.
 
+<<<<<<< HEAD:exercicios/para-sala/exercicio-em-aula.md
 3. Considere o código (em Typescript) abaixo
 
 ```js
+=======
+3. Considere o código abaixo
+```
+>>>>>>> c0e6817ee8082d341a4c4a6ad95e4bfbf2f81564:exercicios/Exercicio complementar para-casa/exercicio-em-aula.md
 class Duck {
     quack() {
         console.log("Quack...");
@@ -120,7 +136,7 @@ class Duck {
 
 class ElectronicDuck extends Duck
 {
-    private _on: boolean;
+    private _on;
 
     constructor() {
         super();
@@ -182,23 +198,28 @@ pool.run();
 
 Refatore o código de maneira a respeitar o princípio da Substituição de Liskov. Crie outras classes se necessário.
 
+<<<<<<< HEAD:exercicios/para-sala/exercicio-em-aula.md
 4. Considere o código (em Typescript) abaixo
 
 ```js
+=======
+4. Considere o código abaixo
+```
+>>>>>>> c0e6817ee8082d341a4c4a6ad95e4bfbf2f81564:exercicios/Exercicio complementar para-casa/exercicio-em-aula.md
 interface Worker
 {
-    work() : String;
-    eat() : String;
+    work();
+    eat();
 }
 
 class Human extends Worker
 {
-    work() : String
+    work() 
     {
         return "Human works";
     }
 
-    eat() : String
+    eat() 
     {
         return "Human eats";
     }
@@ -206,12 +227,20 @@ class Human extends Worker
 
 class Robot extends Worker
 {
+<<<<<<< HEAD:exercicios/para-sala/exercicio-em-aula.md
     work() : String
+=======
+    work()  
+>>>>>>> c0e6817ee8082d341a4c4a6ad95e4bfbf2f81564:exercicios/Exercicio complementar para-casa/exercicio-em-aula.md
     {
         return "Robot works";
     }
 
+<<<<<<< HEAD:exercicios/para-sala/exercicio-em-aula.md
     eat() : String
+=======
+    eat()  
+>>>>>>> c0e6817ee8082d341a4c4a6ad95e4bfbf2f81564:exercicios/Exercicio complementar para-casa/exercicio-em-aula.md
     {
         throw new Error("Robot can't eat");
     }
@@ -252,9 +281,14 @@ class Factory
 
 Refatore o código de maneira a respeitar o princípio da Segregação de Interface. Crie outras classes se necessário.
 
+<<<<<<< HEAD:exercicios/para-sala/exercicio-em-aula.md
 5. Considere o código (em Typescript) abaixo
 
 ```js
+=======
+5. Considere o código abaixo
+```
+>>>>>>> c0e6817ee8082d341a4c4a6ad95e4bfbf2f81564:exercicios/Exercicio complementar para-casa/exercicio-em-aula.md
 class Lamp
 {
     private _color : number;

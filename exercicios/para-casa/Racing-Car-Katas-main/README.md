@@ -1,6 +1,6 @@
 Racing Car Katas
 =================
-Katas de carros de corrida
+(Katas de carros de corrida)
 
 Neste repositório você encontrará código inicial para cinco problemas distintos. Eles podem ser códigos que você herdou de uma base de código herdada. Agora você deseja escrever testes de unidade para eles, e isso é mais difícil do que deveria ser. Todos os trechos de código não seguem um ou mais princípios SOLID.
 
@@ -25,14 +25,10 @@ Desafios:
 5. **Leaderboard**: Escreva os testes de unidade para a classe Tabela de classificação, incluindo corridas com carros autônomos. A Tabela de classificação calcula os pontos e classificações dos pilotos com base nos resultados de diversas corridas.
 
 
-
-TDD com objetos simulados: princípios de design e propriedades emergentes
+Referência
 ----------------------------------------------------------------
 
 
 Este era originalmente um fork do repositório de Luca Minudel. Ele o estava usando para um estudo de princípios de TDD e Design. Estou usando-o como um repositório para armazenar exercícios úteis para pessoas que desejam melhorar suas habilidades com os princípios TDD e SOLID. Por favor, consulte a postagem no blog ["SOLID principles and TDD"](http://coding-is-like-cooking.info/2012/09/solid-principles-and-tdd/) para leitura complementar ou o livro ["The Coding Dojo Handbook"](http://leanpub.com/codingdojohandbook).
-
-
-- Depois de experimentar esses exercícios, iremos inserir a solução na pasta Solução
 
 

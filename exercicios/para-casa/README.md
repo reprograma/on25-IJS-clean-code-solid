@@ -3,7 +3,7 @@
 ## Nome do Exercicio
 
 - Explicação do exercício: 
-[CONTEUDO] 
+[Refatorar o projeto com os príncipios explicados em aula] 
 ---
 
 Terminou o exercício? Dá uma olhada nessa checklist e confere se tá tudo certinho, combinado?!

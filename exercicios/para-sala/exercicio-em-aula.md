@@ -1,28 +1,31 @@
 ## 10.0 Atividades
+
 ### Atividades também no notion da aula
 
 1. Considere a classe abaixo:
-```
+
+```js
 class Product {
+  constructor(name, price, unit) {
+    this.name = name;
+    this.unit = unit;
+  }
 
-    constructor(name, price, unit){
-        this.name = name;
-        this.unit = unit;
-    }
+  showDetails() {
+    console.log("Mostro meus detalhes");
+  }
 
-    showDetails() {
-        console.log("Mostro meus detalhes");
-    }
-
-    addToCart(quantity) {
-        console.log(`Adiciono ${quantity} ${unit} ao carrinho`);
-    }
+  addToCart(quantity) {
+    console.log(`Adiciono ${quantity} ${unit} ao carrinho`);
+  }
 }
 ```
+
 Refatore-a de maneira a respeitar o princípio da Responsabilidade Única. Crie outras classes se necessário.
 
 2. Considere o código (em Typescript) abaixo:
-```
+
+```js
 export enum ResourceType {
     TIME_SLOT,
     SPACE_SLOT
@@ -38,8 +41,8 @@ class Resource {
     }
 }
 
-class ResourceAllocator {    
-  
+class ResourceAllocator {
+
     allocate(resource: Resource) {
         switch (resource.type) {
             case ResourceType.TIME_SLOT:
@@ -99,10 +102,12 @@ class ResourceAllocator {
     }
 }
 ```
+
 Refatore o código de maneira a respeitar o princípio Aberto-Fechado. Crie outras classes se necessário.
 
 3. Considere o código (em Typescript) abaixo
-```
+
+```js
 class Duck {
     quack() {
         console.log("Quack...");
@@ -174,10 +179,12 @@ class Pool {
 const pool = new Pool();
 pool.run();
 ```
-Refatore o código de maneira a respeitar o princípio da Substituição de Liskov. Crie outras classes se  necessário.
+
+Refatore o código de maneira a respeitar o princípio da Substituição de Liskov. Crie outras classes se necessário.
 
 4. Considere o código (em Typescript) abaixo
-```
+
+```js
 interface Worker
 {
     work() : String;
@@ -199,12 +206,12 @@ class Human extends Worker
 
 class Robot extends Worker
 {
-    work() : String 
+    work() : String
     {
         return "Robot works";
     }
 
-    eat() : String 
+    eat() : String
     {
         throw new Error("Robot can't eat");
     }
@@ -242,10 +249,12 @@ class Factory
     }
 }
 ```
-Refatore o código de maneira a respeitar o princípio da Segregação de Interface. Crie outras classes se  necessário.
+
+Refatore o código de maneira a respeitar o princípio da Segregação de Interface. Crie outras classes se necessário.
 
 5. Considere o código (em Typescript) abaixo
-```
+
+```js
 class Lamp
 {
     private _color : number;
@@ -298,4 +307,5 @@ class Button
     }
 }
 ```
-Refatore o código de maneira a respeitar o princípio da Inversão de Dependência. Crie outras classes se  necessário.
+
+Refatore o código de maneira a respeitar o princípio da Inversão de Dependência. Crie outras classes se necessário.

@@ -1,64 +1,60 @@
-var fs = require('fs');
+const fs = require("fs");
 
-HtmlTextConverter = function(fullFilenameWithPath) {
-	this._fullFilenameWithPath = fullFilenameWithPath;
-};
+class HtmlTextConverter {
+  constructor(fullFilenameWithPath) {
+    this.#fullFilenameWithPath = fullFilenameWithPath;
+  }
 
-HtmlTextConverter.prototype = {
+  convertToHtml() {
+    const text = fs.readFileSync(this.#fullFilenameWithPath).toString();
+    let i = 0;
+    const html = [];
+    let convertedLine = [];
+    let characterToConvert = text.charAt(i);
 
-	convertToHtml: function() {
+    const stashNextCharacterAndAdvanceThePointer = () => {
+      const c = text.charAt(i);
+      i += 1;
+      return c;
+    };
 
-		var text = fs.readFileSync(this._fullFilenameWithPath).toString();
+    const addANewLine = () => {
+      const line = convertedLine.join("");
+      html.push(line);
+      convertedLine = [];
+    };
 
-		var stashNextCharacterAndAdvanceThePointer = function() {
-			var c = text.charAt(i);
-			i += 1;
-			return c;
-		};
+    const pushACharacterToTheOutput = () => {
+      convertedLine.push(characterToConvert);
+    };
 
-		var addANewLine = function() {
-			var line = convertedLine.join('');
-			html.push(line);
-			convertedLine = [];
-		};
+    while (i <= text.length) {
+      switch (characterToConvert) {
+        case "<":
+          convertedLine.push("&lt;");
+          break;
+        case ">":
+          convertedLine.push("&gt;");
+          break;
+        case "&":
+          convertedLine.push("&amp;");
+          break;
+        case "\n":
+          addANewLine();
+          break;
+        default:
+          pushACharacterToTheOutput();
+      }
+      characterToConvert = stashNextCharacterAndAdvanceThePointer();
+    }
 
-		var pushACharacterToTheOutput = function() {
-			convertedLine.push(characterToConvert);
-		};
+    addANewLine();
+    return html.join("<br />");
+  }
 
-		var i = 0;
-		var html = [];
-		var convertedLine = [];
-		var characterToConvert = stashNextCharacterAndAdvanceThePointer();
-		while (i <= text.length) {
-
-			switch (characterToConvert) {
-				case '<':
-					convertedLine.push('&lt;');
-					break;
-				case '>':
-					convertedLine.push('&gt;');
-					break;
-				case '&':
-					convertedLine.push('&amp;');
-					break;
-				case '\n':
-					addANewLine();
-					break;
-				default:
-					pushACharacterToTheOutput();
-			}
-
-			characterToConvert = stashNextCharacterAndAdvanceThePointer();
-		}
-
-		addANewLine();
-		return html.join('<br />');
-	},
-
-	getFilename: function() {
-		return this._fullFilenameWithPath;
-	}
-};
+  getFilename() {
+    return this.#fullFilenameWithPath;
+  }
+}
 
 module.exports = HtmlTextConverter;

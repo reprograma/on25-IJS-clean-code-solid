@@ -1,26 +1,31 @@
-var Sensor = require('./sensor.js');
+let Sensor = require("./sensor.js");
 
-Alarm = function() {
-	this._lowPressureThreshold = 17;
-	this._highPressureThreshold = 21;
-	this._sensor = new Sensor();
-	this._alarmOn = false;
-};
+class Alarm {
+  #lowPressureThreshold;
+  #highPressureThreshold;
+  #sensor;
+  #isAlarmOn;
+  constructor() {
+    this.#lowPressureThreshold = 17;
+    this.#highPressureThreshold = 21;
+    this.#sensor = new Sensor();
+    this.#isAlarmOn = false;
+  }
 
-Alarm.prototype = {
+  check() {
+    let psiPressureValue = this.#sensor.popNextPressurePsiValue();
+    this.#isAlarmOn =
+      psiPressureValue < this.#lowPressureThreshold ||
+      psiPressureValue > this.#highPressureThreshold;
+  }
 
-	check: function() {
-		var psiPressureValue = this._sensor.popNextPressurePsiValue();
-
-		if (psiPressureValue < this._lowPressureThreshold || this._highPressureThreshold < psiPressureValue) {
-			this._alarmOn = true;
-		}
-	},
-
-	alarmOn: function() {
-		return this._alarmOn;
-	}
-
-};
+  alarmOn() {
+    return this.#isAlarmOn;
+  }
+}
 
 module.exports = Alarm;
+
+let alarm = new Alarm();
+alarm.check();
+console.log(alarm.alarmOn());

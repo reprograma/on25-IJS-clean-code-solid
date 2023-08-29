@@ -1,9 +1,7 @@
+let turnNumber = 1;
 
-TurnNumberSequence = {
-	_turnNumber: 0,
-	getNextTurnNumber: function() {
-		return TurnNumberSequence._turnNumber++;
-	}
-};
+function turnNumberSequence() {
+  return turnNumber++;
+}
 
-module.exports = TurnNumberSequence;
+module.exports = turnNumberSequence;

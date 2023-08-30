@@ -1,39 +1,35 @@
-/* globals describe, it */
-var chai = require('chai');
-chai.should();
-
-const Alarm = require('../tire-pressure-monitoring-system/alarm.js');
-const Sensor = require('../tire-pressure-monitoring-system/sensor.js');
+const AlarmRefactored = require('../tire-pressure-monitoring-system/AlarmRefactored');
+const SensorRefactored = require('../tire-pressure-monitoring-system/SensorRefactored');
 
 describe('Tyre Pressure Monitoring System', function() {
 	let alarm, sensor;
 
 	beforeEach(() => {
-		sensor = new Sensor();
-		alarm = new Alarm(17, 21, sensor, false);
+		sensor = new SensorRefactored();
+		alarm = new AlarmRefactored(17, 21, sensor, false);
 	})
 	
 	describe('Alarm', function() {
 		it('foo', function() {
-			alarm.alarmOn().should.equal(false);
+			expect(alarm.alarmOn()).toBe(false);
 		});
 
 		it('should trigger alarm when pressure is below the low threshold', function() {
 			alarm._sensor.popNextPressurePsiValue = () => 15
 			alarm.check();
-			alarm.alarmOn().should.equal(true);
+			expect(alarm.alarmOn()).toBe(true);
 		});
 
 		it('should trigger alarm when pressure is above the high threshold', function() {
 			alarm._sensor.popNextPressurePsiValue = () => 23;
 			alarm.check();
-			alarm.alarmOn().should.equal(true);
+			expect(alarm.alarmOn()).toBe(true);
 		});
 
 		it('should not trigger alarm when pressure is within the normal range', function() {
 			alarm._sensor.popNextPressurePsiValue = () => 19;
 			alarm.check();
-			alarm.alarmOn().should.equal(false);
+			expect(alarm.alarmOn()).toBe(false);
 		});
 
 	});

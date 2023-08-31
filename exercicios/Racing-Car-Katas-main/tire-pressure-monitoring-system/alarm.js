@@ -13,7 +13,7 @@ class Alarm {
   }
 
   check() {
-    let psiPressureValue = this.#sensor.popNextPressurePsiValue();
+    let psiPressureValue = Sensor.popNextPressurePsiValue();
     this.#isAlarmOn =
       psiPressureValue < this.#lowPressureThreshold ||
       psiPressureValue > this.#highPressureThreshold;

@@ -8,7 +8,7 @@ class Sensor {
     return pressureTelemetryValue;
   }
 
-  popNextPressurePsiValue() {
+  static popNextPressurePsiValue() {
     let pressureTelemetryValue = Sensor.samplePressure();
     return Sensor.Offset() + pressureTelemetryValue;
   }

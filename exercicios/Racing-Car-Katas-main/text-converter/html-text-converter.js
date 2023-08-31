@@ -2,58 +2,25 @@ const fs = require("fs");
 
 class HtmlTextConverter {
   constructor(fullFilenameWithPath) {
-    this.#fullFilenameWithPath = fullFilenameWithPath;
+    this.fullFilenameWithPath = fullFilenameWithPath;
   }
 
   convertToHtml() {
-    const text = fs.readFileSync(this.#fullFilenameWithPath).toString();
-    let i = 0;
-    const html = [];
-    let convertedLine = [];
-    let characterToConvert = text.charAt(i);
+    const text = fs.readFileSync(this.fullFilenameWithPath, "utf-8");
+    const lines = text.split("\n");
 
-    const stashNextCharacterAndAdvanceThePointer = () => {
-      const c = text.charAt(i);
-      i += 1;
-      return c;
-    };
+    const htmlLines = lines.map((line) => {
+      return line
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/&/g, "&amp;");
+    });
 
-    const addANewLine = () => {
-      const line = convertedLine.join("");
-      html.push(line);
-      convertedLine = [];
-    };
-
-    const pushACharacterToTheOutput = () => {
-      convertedLine.push(characterToConvert);
-    };
-
-    while (i <= text.length) {
-      switch (characterToConvert) {
-        case "<":
-          convertedLine.push("&lt;");
-          break;
-        case ">":
-          convertedLine.push("&gt;");
-          break;
-        case "&":
-          convertedLine.push("&amp;");
-          break;
-        case "\n":
-          addANewLine();
-          break;
-        default:
-          pushACharacterToTheOutput();
-      }
-      characterToConvert = stashNextCharacterAndAdvanceThePointer();
-    }
-
-    addANewLine();
-    return html.join("<br />");
+    return htmlLines.join("<br />");
   }
 
   getFilename() {
-    return this.#fullFilenameWithPath;
+    return this.fullFilenameWithPath;
   }
 }
 

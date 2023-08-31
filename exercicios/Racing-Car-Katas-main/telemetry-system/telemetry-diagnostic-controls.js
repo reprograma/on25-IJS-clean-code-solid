@@ -1,42 +1,46 @@
-var TelemetryClient = require('./telemetry-client.js');
+let TelemetryClient = require("./telemetry-client.js");
 
-TelemetryDiagnosticControls = function() {
+class TelemetryDiagnosticControls {
+  #diagnosticChannelConnectionString;
+  #telemetryClient;
+  #diagnosticInfo;
+  constructor() {
+    this.#diagnosticChannelConnectionString = () => "*111#";
+    this.#telemetryClient = new TelemetryClient();
+    this.#diagnosticInfo = "";
+  }
 
-	this._diagnosticChannelConnectionString = function() { return '*111#'; };
+  readDiagnosticInfo() {
+    return this.#diagnosticInfo;
+  }
+  writeDiagnosticInfo(newValue) {
+    this.#diagnosticInfo = newValue;
+  }
+  checkTransmission() {
+    this.#diagnosticInfo = "";
+    this.#telemetryClient.disconnect();
+    let retryLeft = 3;
+    while (!this.#telemetryClient.onlineStatus && retryLeft > 0) {
+      this.#telemetryClient.connect(this.#diagnosticChannelConnectionString());
+      retryLeft -= 1;
+    }
 
-	this._telemetryClient = new TelemetryClient();
-	this._diagnosticInfo = '';
-};
+    if (!this.#telemetryClient.onlineStatus) {
+      throw "Unable to connect";
+    }
 
-TelemetryDiagnosticControls.prototype = {
+    this.#telemetryClient.send(TelemetryClient.diagnosticMessage());
+    this.#diagnosticInfo = this.#telemetryClient.receive();
+  }
 
-	readDiagnosticInfo: function() {
-		return this._diagnosticInfo;
-	},
+  //para fins de teste, simular os metodos de telemetryClient é uma prop privada
+  setTelemetryClient(telemetryClient) {
+    this.#telemetryClient = telemetryClient;
+  }
+}
 
-	writeDiagnosticInfo: function(newValue) {
-		this._diagnosticInfo = newValue;
-	},
-
-	checkTransmission: function() {
-
-		this._diagnosticInfo = '';
-
-		this._telemetryClient.disconnect();
-
-		var retryLeft = 3;
-		while (this._telemetryClient.onlineStatus() === false && retryLeft > 0) {
-			this._telemetryClient.connect(this._diagnosticChannelConnectionString);
-			retryLeft -= 1;
-		}
-
-		if (this._telemetryClient.onlineStatus() === false) {
-			throw 'Unable to connect';
-		}
-
-		this._telemetryClient.send(TelemetryClient.diagnosticMessage());
-		this._diagnosticInfo = this._telemetryClient.receive();
-	}
-};
+const diagnosticControls = new TelemetryDiagnosticControls();
+diagnosticControls.checkTransmission();
+console.log(diagnosticControls.readDiagnosticInfo());
 
 module.exports = TelemetryDiagnosticControls;

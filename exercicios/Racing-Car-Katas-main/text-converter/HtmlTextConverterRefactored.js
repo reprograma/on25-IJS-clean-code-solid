@@ -1,15 +1,19 @@
-var fs = require('fs');
+const fs = require('fs');
 
 class HtmlTextConverterRefactored {
+    _fullFilenameWithPath;
+    html = [];
+    convertedLine = [];
+    text = '';
+    i = 0;
+
     constructor(fullFilenameWithPath) {
-        this.fullFilenameWithPath = fullFilenameWithPath;
-        this.html = [];
-        this.convertedLine = [];
+        this._fullFilenameWithPath = fullFilenameWithPath;
     }
 
-    stashNextCharacterAndAdvanceThePointer(i) {
-        var c = this.text.charAt(i);
-        i += 1;
+    stashNextCharacterAndAdvanceThePointer() {
+        var c = this.text.charAt(this.i);
+        this.i += 1;
         return c;
     }
 
@@ -23,15 +27,15 @@ class HtmlTextConverterRefactored {
         this.convertedLine.push(characterToConvert);
     }
 
-	convertCharacter(){
-		const specialCharacters = {
+    convertCharacter() {
+        const specialCharacters = {
             '<': '&lt;',
             '>': '&gt;',
             '&': '&amp;'
         };
 
-        let i = 0;
-        let characterToConvert = this.stashNextCharacterAndAdvanceThePointer(i);
+        // let i = 0;
+        let characterToConvert = this.stashNextCharacterAndAdvanceThePointer(this.i);
         while (i < this.text.length) {
             if (characterToConvert === '\n') {
                 this.addANewLine();
@@ -43,22 +47,22 @@ class HtmlTextConverterRefactored {
             characterToConvert = this.stashNextCharacterAndAdvanceThePointer(i);
             i++;
         }
-	}
+    }
 
     convertToHtml() {
-        this.text = fs.readFileSync(this.fullFilenameWithPath).toString();
+        this.text = fs.readFileSync(this._fullFilenameWithPath).toString();
         this.stashNextCharacterAndAdvanceThePointer(0);
         this.addANewLine();
         this.pushACharacterToTheOutput();
 
-        convertCharacter();
+        this.convertCharacter();
         this.addANewLine();
         return this.html.join('<br />');
     }
 
     getFilename() {
-        return this.fullFilenameWithPath;
-	}
+        return this._fullFilenameWithPath;
+    }
 }
 
 module.exports = HtmlTextConverterRefactored;

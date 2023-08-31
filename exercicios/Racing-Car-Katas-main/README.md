@@ -16,7 +16,7 @@ Desafios:
 
 1. **TirePressureMonitoringSystem**: Escreva os testes unitários para a classe Alarm. A classe Alarme foi projetada para monitorar a pressão dos pneus e definir um alarme se a pressão cair fora da faixa esperada. A classe Sensor fornecida para o exercício simula o comportamento de um sensor de pneu real, fornecendo valores aleatórios, mas realistas.
 
-2. **UnicodeFileToHtmlTextConverter**: Escreva os testes de unidade para a classe UnicodeFileToHtmlTextConverter. A classe UnicodeFileToHtmlTextConverter foi projetada para reformatar um arquivo de texto simples para exibição em um navegador. Para as versões Python e Java, existe uma classe adicional "HtmlPagesConverter" que é um pouco mais difícil de testar. Ele não apenas converte o texto de um arquivo em HTML, mas também oferece suporte à paginação. É um exercício de acompanhamento.
+2. **HtmlTextConverter**: Escreva os testes de unidade para a classe UnicodeFileToHtmlTextConverter. A classe UnicodeFileToHtmlTextConverter foi projetada para reformatar um arquivo de texto simples para exibição em um navegador. Para as versões Python e Java, existe uma classe adicional "HtmlPagesConverter" que é um pouco mais difícil de testar. Ele não apenas converte o texto de um arquivo em HTML, mas também oferece suporte à paginação. É um exercício de acompanhamento.
 
 3. **TicketDispenser**: Escreva os testes de unidade para o TicketDispenser. A classe TicketDispenser foi projetada para ser usada para gerenciar um sistema de filas em uma loja. Pode haver mais de um dispensador de bilhetes, mas o mesmo bilhete não deve ser emitido para dois clientes diferentes.
 

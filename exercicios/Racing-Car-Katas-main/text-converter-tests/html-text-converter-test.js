@@ -1,6 +1,4 @@
 /* globals describe, it */
-var chai = require('chai');
-chai.should();
 
 var HtmlTextConverter = require('../text-converter/html-text-converter.js');
 

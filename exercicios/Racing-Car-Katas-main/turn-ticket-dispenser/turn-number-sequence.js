@@ -1,9 +1,15 @@
+class TurnNumberSequence {
+	#turnNumber
 
-TurnNumberSequence = {
-	_turnNumber: 0,
-	getNextTurnNumber: function() {
-		return TurnNumberSequence._turnNumber++;
+	constructor(){
+		this.#turnNumber = 0
 	}
-};
+
+	static getNextTurnNumber(){
+		return this.#turnNumber++
+	}
+}
 
 module.exports = TurnNumberSequence;
+
+

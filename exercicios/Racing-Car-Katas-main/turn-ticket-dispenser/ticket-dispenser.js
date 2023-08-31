@@ -1,18 +1,15 @@
-var TurnNumberSequence = require('./turn-number-sequence.js');
-var TurnTicket = require('./turn-ticket.js');
+const TurnNumberSequence = require('./turn-number-sequence.js');
+const TurnTicket = require('./turn-ticket.js');
 
-TicketDispenser = function() {
-};
+class TicketDispenser {
 
-TicketDispenser.prototype = {
+	getTurnTicket() {
+		let newTurnNumber = new TurnNumberSequence.getNextTurnNumber()
+		let newTurnTicket = new TurnTicket(newTurnNumber)
 
-	getTurnTicket: function() {
-		var newTurnNumber = TurnNumberSequence.getNextTurnNumber();
-		var newTurnTicket = new TurnTicket(newTurnNumber);
-
-		return newTurnTicket;
+		return newTurnTicket
 	}
+}
 
-};
 
 module.exports = TicketDispenser;

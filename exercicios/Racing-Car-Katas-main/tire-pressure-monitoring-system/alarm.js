@@ -1,4 +1,4 @@
-var Sensor = require('./sensor.js');
+let Sensor = require('./sensor.js');
 
 Alarm = function() {
 	this._lowPressureThreshold = 17;
@@ -24,3 +24,4 @@ Alarm.prototype = {
 };
 
 module.exports = Alarm;
+

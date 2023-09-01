@@ -15,4 +15,18 @@ TicketDispenser.prototype = {
 
 };
 
+// class TicketDispenser{
+// 	turnTicket;
+
+// 	constructor(){
+// 		this.turnTicket = 0;
+// 	}
+// 	turnTicketSequence(){
+// 		return ++this.turnTicket;
+
+// 	}
+// }
+// const ticket = new TicketDispenser();
+// console.log(ticket.turnTicketSequence())
+
 module.exports = TicketDispenser;

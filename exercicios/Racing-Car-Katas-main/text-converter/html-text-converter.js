@@ -1,37 +1,41 @@
-var fs = require('fs');
+let fs = require('fs');
+class HtmlTextConverter {
+    #fullFilenameWithPath;
+	html = [];
+    convertedLine = [];
+	i = 0;
+	text = '';
 
-HtmlTextConverter = function(fullFilenameWithPath) {
-	this._fullFilenameWithPath = fullFilenameWithPath;
-};
+    constructor(fullFilenameWithPath) {
+        this.#fullFilenameWithPath = fullFilenameWithPath;
+    }
 
-HtmlTextConverter.prototype = {
+	stashNextCharacterAndAdvanceThePointer(){
+		let c = this.text.charAt(this.i);
+		this.i += 1;
+		return c;
+	};
 
-	convertToHtml: function() {
+	addANewLine(){
+		let line = this.convertedLine.join('');
+		this.html.push(line);
+		this.convertedLine = [];
+	};
 
-		var text = fs.readFileSync(this._fullFilenameWithPath).toString();
+	pushACharacterToTheOutput(){
+		let characterToConvert = this.stashNextCharacterAndAdvanceThePointer();
+		this.convertedLine.push(characterToConvert);
+	};
 
-		var stashNextCharacterAndAdvanceThePointer = function() {
-			var c = text.charAt(i);
-			i += 1;
-			return c;
-		};
+	convertToHtml(){
+		let text = fs.readFileSync(this.#fullFilenameWithPath).toString();
+		let characterToConvert = this.stashNextCharacterAndAdvanceThePointer();
 
-		var addANewLine = function() {
-			var line = convertedLine.join('');
-			html.push(line);
-			convertedLine = [];
-		};
+		this.stashNextCharacterAndAdvanceThePointer();
+		this.addANewLine();
+		this.pushACharacterToTheOutput();
 
-		var pushACharacterToTheOutput = function() {
-			convertedLine.push(characterToConvert);
-		};
-
-		var i = 0;
-		var html = [];
-		var convertedLine = [];
-		var characterToConvert = stashNextCharacterAndAdvanceThePointer();
 		while (i <= text.length) {
-
 			switch (characterToConvert) {
 				case '<':
 					convertedLine.push('&lt;');
@@ -48,17 +52,16 @@ HtmlTextConverter.prototype = {
 				default:
 					pushACharacterToTheOutput();
 			}
-
 			characterToConvert = stashNextCharacterAndAdvanceThePointer();
+
+			addANewLine();
+			return html.join('<br />');
 		}
-
-		addANewLine();
-		return html.join('<br />');
-	},
-
-	getFilename: function() {
-		return this._fullFilenameWithPath;
 	}
-};
+
+	getFilename() {
+        return this.#fullFilenameWithPath;
+    }
+}
 
 module.exports = HtmlTextConverter;

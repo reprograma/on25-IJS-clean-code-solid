@@ -1,8 +1,7 @@
 var TurnNumberSequence = require('./turn-number-sequence.js');
 var TurnTicket = require('./turn-ticket.js');
 
-TicketDispenser = function() {
-};
+TicketDispenser = function() {};
 
 TicketDispenser.prototype = {
 
@@ -14,5 +13,6 @@ TicketDispenser.prototype = {
 	}
 
 };
+
 
 module.exports = TicketDispenser;

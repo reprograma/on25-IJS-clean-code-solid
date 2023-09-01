@@ -19,6 +19,7 @@ Alarm.prototype = {
 
 	alarmOn: function() {
 		return this._alarmOn;
+	
 	}
 
 };

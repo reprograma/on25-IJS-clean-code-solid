@@ -1,4 +1,3 @@
-var fs = require('fs');
 
 HtmlTextConverter = function(fullFilenameWithPath) {
 	this._fullFilenameWithPath = fullFilenameWithPath;

@@ -1,6 +1,6 @@
 /* globals describe, it */
-var chai = require('chai');
-chai.should();
+var jest = require('chai');
+jest.should();
 
 var HtmlTextConverter = require('../text-converter/html-text-converter.js');
 
@@ -10,8 +10,10 @@ describe('Html Converter', function() {
 
 		it('foo', function() {
 			var converter = new HtmlTextConverter('foo');
-			converter.getFilename().should.equal('fixme');
+			converter.getFilename().should.equal('foo');
 		});
+
+		
 
 	});
 

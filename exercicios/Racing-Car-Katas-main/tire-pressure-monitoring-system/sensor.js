@@ -7,7 +7,7 @@ Sensor = function() {
 
 	Sensor.samplePressure = function() {
 		// placeholder implementation that simulate a real sensor in a real tire
-		var pressureTelemetryValue = Math.floor(6 * Math.random() * Math.random());
+		var pressureTelemetryValue = 3 //Math.floor(6 * Math.random() * Math.random());
 		return pressureTelemetryValue;
 	};
 };

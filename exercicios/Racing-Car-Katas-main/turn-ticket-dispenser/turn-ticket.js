@@ -1,10 +1,10 @@
 TurnTicket = function(turnNumber) {
-	this._turnNumber = turnNumber;
+	this.turnNumber = turnNumber;
 };
 
 TurnTicket.prototype = {
 	turnNumber: function() {
-		return this._turnNumber;
+		return this.turnNumber;
 	}
 };
 

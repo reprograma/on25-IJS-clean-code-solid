@@ -3,11 +3,13 @@ var Alarm = require('../tire-pressure-monitoring-system/alarm.js');
 
 describe('Tire Pressure Monitoring System', () =>  {
 
+	let alarm;
+
 		beforeEach(() => {
 			alarm = new Alarm();
 		});
 
-		it('foo', () =>  {
+		it('Verify the function alarmOn', () =>  {
 			expect(alarm.alarmOn()).toEqual(false);
 		});
 

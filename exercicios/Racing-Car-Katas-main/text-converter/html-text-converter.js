@@ -1,37 +1,31 @@
 var fs = require('fs');
 
-HtmlTextConverter = function(fullFilenameWithPath) {
-	this._fullFilenameWithPath = fullFilenameWithPath;
-};
+class HtmlTextConverter {
+	constructor(fileName){
+		this._fileName = fileName;
+	}
 
-HtmlTextConverter.prototype = {
-
-	convertToHtml: function() {
-
-		var text = fs.readFileSync(this._fullFilenameWithPath).toString();
-
-		var stashNextCharacterAndAdvanceThePointer = function() {
+	convertToHtml(){
+		var text = fs.readFileSync(this._fileName).toString(),
+		stashNextCharacterAndAdvanceThePointer = () => {
 			var c = text.charAt(i);
 			i += 1;
 			return c;
-		};
-
-		var addANewLine = function() {
+		},
+		addANewLine = () =>  {
 			var line = convertedLine.join('');
 			html.push(line);
 			convertedLine = [];
-		};
-
-		var pushACharacterToTheOutput = function() {
+		},
+		pushACharacterToTheOutput = () =>  {
 			convertedLine.push(characterToConvert);
-		};
+		},
+		i = 0,
+		html = [],
+		convertedLine = [],
+		characterToConvert = stashNextCharacterAndAdvanceThePointer();
 
-		var i = 0;
-		var html = [];
-		var convertedLine = [];
-		var characterToConvert = stashNextCharacterAndAdvanceThePointer();
 		while (i <= text.length) {
-
 			switch (characterToConvert) {
 				case '<':
 					convertedLine.push('&lt;');
@@ -54,11 +48,12 @@ HtmlTextConverter.prototype = {
 
 		addANewLine();
 		return html.join('<br />');
-	},
+	};
 
-	getFilename: function() {
-		return this._fullFilenameWithPath;
-	}
-};
+	getFilename(){
+		return this._fileName;
+	};
+}
 
-module.exports = HtmlTextConverter;
+module.exports = HtmlTextConverter
+

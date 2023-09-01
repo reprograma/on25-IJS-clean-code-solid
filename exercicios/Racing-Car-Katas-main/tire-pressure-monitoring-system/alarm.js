@@ -1,26 +1,27 @@
-var Sensor = require('./sensor.js');
+/* A classe Alarme foi projetada para monitorar a pressão dos pneus e 
+definir um alarme se a pressão cair fora da faixa esperada. */
 
-Alarm = function() {
-	this._lowPressureThreshold = 17;
-	this._highPressureThreshold = 21;
-	this._sensor = new Sensor();
-	this._alarmOn = false;
-};
+const Sensor = require('./sensor.js');
 
-Alarm.prototype = {
-
-	check: function() {
-		var psiPressureValue = this._sensor.popNextPressurePsiValue();
-
-		if (psiPressureValue < this._lowPressureThreshold || this._highPressureThreshold < psiPressureValue) {
-			this._alarmOn = true;
-		}
-	},
-
-	alarmOn: function() {
-		return this._alarmOn;
+class Alarm {
+	constructor() {
+		this._lowPressureLimit = 17;
+		this._highPressureLimit = 21;
+		this._sensor = new Sensor();
+		this._alarmOn = false;
 	}
 
-};
+	check() {
+		let psiPressureValue = this._sensor.popNextPressurePsiValue();
+		if(psiPressureValue < this._lowPressureLimit || this._highPressureLimit < psiPressureValue) {
+			this._alarmOn = true;
+		}
+	}
+
+	alarmOn() {
+		return this._alarmOn;
+	}
+}
+
 
 module.exports = Alarm;

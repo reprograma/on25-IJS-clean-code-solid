@@ -1,27 +1,23 @@
 var TelemetryClient = require('./telemetry-client.js');
 
-TelemetryDiagnosticControls = function() {
+class TelemetryDiagnosticControls {
 
+	constructor(){
 	this._diagnosticChannelConnectionString = function() { return '*111#'; };
-
 	this._telemetryClient = new TelemetryClient();
 	this._diagnosticInfo = '';
-};
+	};
 
-TelemetryDiagnosticControls.prototype = {
-
-	readDiagnosticInfo: function() {
+	readDiagnosticInfo() {
 		return this._diagnosticInfo;
-	},
+	};
 
-	writeDiagnosticInfo: function(newValue) {
-		this._diagnosticInfo = newValue;
-	},
+	writeDiagnosticInfo(value) {
+		this._diagnosticInfo = value;
+	};
 
-	checkTransmission: function() {
-
+	checkTransmission() {
 		this._diagnosticInfo = '';
-
 		this._telemetryClient.disconnect();
 
 		var retryLeft = 3;
@@ -36,7 +32,11 @@ TelemetryDiagnosticControls.prototype = {
 
 		this._telemetryClient.send(TelemetryClient.diagnosticMessage());
 		this._diagnosticInfo = this._telemetryClient.receive();
-	}
-};
+	};
+}
+
+
+
+
 
 module.exports = TelemetryDiagnosticControls;

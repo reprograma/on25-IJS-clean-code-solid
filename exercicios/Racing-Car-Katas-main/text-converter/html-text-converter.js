@@ -1,14 +1,15 @@
-var fs = require('fs');
+var fileSync = require('fs');
 
-HtmlTextConverter = function(fullFilenameWithPath) {
-	this._fullFilenameWithPath = fullFilenameWithPath;
-};
+class HtmlTextConverter {
+	#fullFilenameWithPath;
 
-HtmlTextConverter.prototype = {
+	constructor(fullFilenameWithPath){
+		this.#fullFilenameWithPath = fullFilenameWithPath;
+	}
 
-	convertToHtml: function() {
+	convertToHtml() {
 
-		var text = fs.readFileSync(this._fullFilenameWithPath).toString();
+		var text = fileSync.readFileSync(this.#fullFilenameWithPath).toString();
 
 		var stashNextCharacterAndAdvanceThePointer = function() {
 			var c = text.charAt(i);
@@ -54,11 +55,16 @@ HtmlTextConverter.prototype = {
 
 		addANewLine();
 		return html.join('<br />');
-	},
-
-	getFilename: function() {
-		return this._fullFilenameWithPath;
 	}
-};
 
+	getFilename() {
+		return this.#fullFilenameWithPath;
+	}
+
+}
 module.exports = HtmlTextConverter;
+
+const converter = new HtmlTextConverter('C:\Users\Nicole\OneDrive\Área de Trabalho\Nicole\titulo de eleitor.txt');
+console.log(converter)
+console.log(converter.convertToHtml())
+console.log(converter);

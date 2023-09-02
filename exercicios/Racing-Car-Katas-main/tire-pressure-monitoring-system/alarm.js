@@ -1,4 +1,4 @@
-var Sensor = require('./sensor.js');
+const Sensor = require('./sensor.js');
 
 Alarm = function() {
 	this._lowPressureThreshold = 17;
@@ -10,7 +10,7 @@ Alarm = function() {
 Alarm.prototype = {
 
 	check: function() {
-		var psiPressureValue = this._sensor.popNextPressurePsiValue();
+		const psiPressureValue = this._sensor.popNextPressurePsiValue();
 
 		if (psiPressureValue < this._lowPressureThreshold || this._highPressureThreshold < psiPressureValue) {
 			this._alarmOn = true;

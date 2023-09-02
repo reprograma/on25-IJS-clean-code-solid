@@ -1,28 +1,36 @@
 ## 10.0 Atividades
+
 ### Atividades também no notion da aula
 
 1. Considere a classe abaixo:
-```
+
+```js
 class Product {
+  constructor(name, price, unit) {
+    this.name = name;
+    this.unit = unit;
+  }
 
-    constructor(name, price, unit){
-        this.name = name;
-        this.unit = unit;
-    }
+  showDetails() {
+    console.log("Mostro meus detalhes");
+  }
 
-    showDetails() {
-        console.log("Mostro meus detalhes");
-    }
-
-    addToCart(quantity) {
-        console.log(`Adiciono ${quantity} ${unit} ao carrinho`);
-    }
+  addToCart(quantity) {
+    console.log(`Adiciono ${quantity} ${unit} ao carrinho`);
+  }
 }
 ```
+
 Refatore-a de maneira a respeitar o princípio da Responsabilidade Única. Crie outras classes se necessário.
 
+<<<<<<< HEAD:exercicios/para-sala/exercicio-em-aula.md
+2. Considere o código (em Typescript) abaixo:
+
+```js
+=======
 2. Considere o código abaixo:
 ```
+>>>>>>> c0e6817ee8082d341a4c4a6ad95e4bfbf2f81564:exercicios/Exercicio complementar para-casa/exercicio-em-aula.md
 export enum ResourceType {
     TIME_SLOT,
     SPACE_SLOT
@@ -38,9 +46,15 @@ class Resource {
     }
 }
 
+<<<<<<< HEAD:exercicios/para-sala/exercicio-em-aula.md
+class ResourceAllocator {
+
+    allocate(resource: Resource) {
+=======
 class ResourceAllocator {    
   
     allocate(resource) {
+>>>>>>> c0e6817ee8082d341a4c4a6ad95e4bfbf2f81564:exercicios/Exercicio complementar para-casa/exercicio-em-aula.md
         switch (resource.type) {
             case ResourceType.TIME_SLOT:
                 this.findFreeTimeSlot();
@@ -99,10 +113,17 @@ class ResourceAllocator {
     }
 }
 ```
+
 Refatore o código de maneira a respeitar o princípio Aberto-Fechado. Crie outras classes se necessário.
 
+<<<<<<< HEAD:exercicios/para-sala/exercicio-em-aula.md
+3. Considere o código (em Typescript) abaixo
+
+```js
+=======
 3. Considere o código abaixo
 ```
+>>>>>>> c0e6817ee8082d341a4c4a6ad95e4bfbf2f81564:exercicios/Exercicio complementar para-casa/exercicio-em-aula.md
 class Duck {
     quack() {
         console.log("Quack...");
@@ -174,10 +195,17 @@ class Pool {
 const pool = new Pool();
 pool.run();
 ```
-Refatore o código de maneira a respeitar o princípio da Substituição de Liskov. Crie outras classes se  necessário.
 
+Refatore o código de maneira a respeitar o princípio da Substituição de Liskov. Crie outras classes se necessário.
+
+<<<<<<< HEAD:exercicios/para-sala/exercicio-em-aula.md
+4. Considere o código (em Typescript) abaixo
+
+```js
+=======
 4. Considere o código abaixo
 ```
+>>>>>>> c0e6817ee8082d341a4c4a6ad95e4bfbf2f81564:exercicios/Exercicio complementar para-casa/exercicio-em-aula.md
 interface Worker
 {
     work();
@@ -199,12 +227,20 @@ class Human extends Worker
 
 class Robot extends Worker
 {
+<<<<<<< HEAD:exercicios/para-sala/exercicio-em-aula.md
+    work() : String
+=======
     work()  
+>>>>>>> c0e6817ee8082d341a4c4a6ad95e4bfbf2f81564:exercicios/Exercicio complementar para-casa/exercicio-em-aula.md
     {
         return "Robot works";
     }
 
+<<<<<<< HEAD:exercicios/para-sala/exercicio-em-aula.md
+    eat() : String
+=======
     eat()  
+>>>>>>> c0e6817ee8082d341a4c4a6ad95e4bfbf2f81564:exercicios/Exercicio complementar para-casa/exercicio-em-aula.md
     {
         throw new Error("Robot can't eat");
     }
@@ -242,10 +278,17 @@ class Factory
     }
 }
 ```
-Refatore o código de maneira a respeitar o princípio da Segregação de Interface. Crie outras classes se  necessário.
 
+Refatore o código de maneira a respeitar o princípio da Segregação de Interface. Crie outras classes se necessário.
+
+<<<<<<< HEAD:exercicios/para-sala/exercicio-em-aula.md
+5. Considere o código (em Typescript) abaixo
+
+```js
+=======
 5. Considere o código abaixo
 ```
+>>>>>>> c0e6817ee8082d341a4c4a6ad95e4bfbf2f81564:exercicios/Exercicio complementar para-casa/exercicio-em-aula.md
 class Lamp
 {
     private _color : number;
@@ -298,4 +341,5 @@ class Button
     }
 }
 ```
-Refatore o código de maneira a respeitar o princípio da Inversão de Dependência. Crie outras classes se  necessário.
+
+Refatore o código de maneira a respeitar o princípio da Inversão de Dependência. Crie outras classes se necessário.

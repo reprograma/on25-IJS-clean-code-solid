@@ -11,10 +11,12 @@ Alarm.prototype = {
 
 	check: function() {
 		var psiPressureValue = this._sensor.popNextPressurePsiValue();
+		
 
 		if (psiPressureValue < this._lowPressureThreshold || this._highPressureThreshold < psiPressureValue) {
 			this._alarmOn = true;
 		}
+		return psiPressureValue
 	},
 
 	alarmOn: function() {

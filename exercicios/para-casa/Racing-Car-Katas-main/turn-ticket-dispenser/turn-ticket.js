@@ -1,11 +1,13 @@
-TurnTicket = function(turnNumber) {
-	this._turnNumber = turnNumber;
-};
+class TurnTicket {
+	#turnNumber;
 
-TurnTicket.prototype = {
-	turnNumber: function() {
-		return this._turnNumber;
+	constructor(turnNumber) {
+		this.#turnNumber = turnNumber;
+		return this.#turnNumber;
 	}
-};
+	get turnNumber() {
+		return this.#turnNumber;
+	}
+}
 
 module.exports = TurnTicket;

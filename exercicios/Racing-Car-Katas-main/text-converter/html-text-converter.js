@@ -1,4 +1,4 @@
-var fs = require('fs');
+const fs = require('fs');
 
 HtmlTextConverter = function(fullFilenameWithPath) {
 	this._fullFilenameWithPath = fullFilenameWithPath;
@@ -8,28 +8,28 @@ HtmlTextConverter.prototype = {
 
 	convertToHtml: function() {
 
-		var text = fs.readFileSync(this._fullFilenameWithPath).toString();
+		const text = fs.readFileSync(this._fullFilenameWithPath).toString();
 
-		var stashNextCharacterAndAdvanceThePointer = function() {
-			var c = text.charAt(i);
+		const stashNextCharacterAndAdvanceThePointer = function() {
+			const c = text.charAt(i);
 			i += 1;
 			return c;
 		};
 
-		var addANewLine = function() {
-			var line = convertedLine.join('');
+		const addANewLine = function() {
+			const line = convertedLine.join('');
 			html.push(line);
 			convertedLine = [];
 		};
 
-		var pushACharacterToTheOutput = function() {
+		const pushACharacterToTheOutput = function() {
 			convertedLine.push(characterToConvert);
 		};
 
-		var i = 0;
-		var html = [];
-		var convertedLine = [];
-		var characterToConvert = stashNextCharacterAndAdvanceThePointer();
+	let i = 0;
+		const html = [];
+		const convertedLine = [];
+		const characterToConvert = stashNextCharacterAndAdvanceThePointer();
 		while (i <= text.length) {
 
 			switch (characterToConvert) {

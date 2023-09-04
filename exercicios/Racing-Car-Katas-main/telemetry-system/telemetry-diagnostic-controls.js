@@ -1,4 +1,4 @@
-var TelemetryClient = require('./telemetry-client.js');
+const TelemetryClient = require('./telemetry-client.js');
 
 TelemetryDiagnosticControls = function() {
 

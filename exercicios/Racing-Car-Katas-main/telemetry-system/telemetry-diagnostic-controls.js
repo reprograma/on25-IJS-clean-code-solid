@@ -1,4 +1,4 @@
-var TelemetryClient = require('./telemetry-client.js');
+let TelemetryClient = require('./telemetry-client.js');
 
 TelemetryDiagnosticControls = function() {
 
@@ -24,7 +24,7 @@ TelemetryDiagnosticControls.prototype = {
 
 		this._telemetryClient.disconnect();
 
-		var retryLeft = 3;
+		let retryLeft = 3;
 		while (this._telemetryClient.onlineStatus() === false && retryLeft > 0) {
 			this._telemetryClient.connect(this._diagnosticChannelConnectionString);
 			retryLeft -= 1;

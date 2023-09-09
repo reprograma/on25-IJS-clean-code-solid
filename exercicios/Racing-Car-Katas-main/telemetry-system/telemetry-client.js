@@ -16,7 +16,7 @@ TelemetryClient.prototype = {
 
 	// simulate the operation on a real modem
 	_connectionEventsSimulator: function(min, max) {
-		var delta = max + 1 - min;
+		let delta = max + 1 - min;
 		return min + Math.floor(delta * Math.random());
 	},
 
@@ -26,7 +26,7 @@ TelemetryClient.prototype = {
 		}
 
 		// simulate the operation on a real modem
-		var success = this._connectionEventsSimulator(1, 10) <= 8;
+		let success = this._connectionEventsSimulator(1, 10) <= 8;
 
 		this._onlineStatus = success;
 	},
@@ -65,14 +65,14 @@ TelemetryClient.prototype = {
 	},
 
 	receive: function() {
-		var message;
+		let message;
 
 		if (typeof (this._diagnosticMessageResult) === 'undefined' || this._diagnosticMessageResult === '') {
 
 			// simulate a received message (just for illustration - not needed for this exercise)
 			message = '';
-			var messageLength = this._connectionEventsSimulator(50, 110);
-			for (var i = messageLength; i >= 0; --i) {
+			let messageLength = this._connectionEventsSimulator(50, 110);
+			for (let i = messageLength; i >= 0; --i) {
 				message += this._connectionEventsSimulator(40, 126).toString();
 			}
 		}

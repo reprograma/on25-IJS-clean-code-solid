@@ -1,18 +1,33 @@
-/* globals describe, it */
-var chai = require('chai');
-chai.should();
+let Alarm = require('../tire-pressure-monitoring-system/alarm.js');
 
-var Alarm = require('../tire-pressure-monitoring-system/alarm.js');
+describe('check class Alarm', () => {
 
-describe('Tyre Pressure Monitoring System', function() {
+	let alarm;
 
-	describe('Alarm', function() {
+	beforeEach(() => {
+		alarm = new Alarm();
+	})
 
-		it('foo', function() {
-			var alarm = new Alarm();
-			alarm.alarmOn().should.equal(false);
-		});
-
+	it('should verify alarmOn function', () => {
+		expect(alarm.alarmOn()).toBe(false);
 	});
+
+	it('should verify when the psiPressureValue is lower then lowPressureThreshold', () => {
+		alarm.psiPressureValue = 15;
+		alarm.check();
+		expect(alarm.alarmOn()).toBe(true);
+	})
+
+	it('should verify when the psiPressureValue is higher then highPressureThreshold', () => {
+		alarm.psiPressureValue = 25;
+		alarm.check();
+		expect(alarm.alarmOn()).toBe(true);
+	})
+
+	it('should verify when the psiPressureValue does not attend the validation', () => {
+		alarm.psiPressureValue = 18;
+		alarm.check();
+		expect(alarm.alarmOn()).toBe(false);
+	})
 
 });

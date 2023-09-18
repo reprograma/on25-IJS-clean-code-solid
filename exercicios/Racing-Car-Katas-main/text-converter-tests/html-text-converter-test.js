@@ -1,18 +1,20 @@
-/* globals describe, it */
-var chai = require('chai');
-chai.should();
+let HtmlTextConverter = require('../text-converter/html-text-converter.js');
 
-var HtmlTextConverter = require('../text-converter/html-text-converter.js');
+describe('check class HtmlTextConverter', () => {
 
-describe('Html Converter', function() {
+	let converter;
 
-	describe('HtmlTextConverter', function() {
+	beforeEach(() => {
+		converter = new HtmlTextConverter('foo');
+	})
 
-		it('foo', function() {
-			var converter = new HtmlTextConverter('foo');
-			converter.getFilename().should.equal('fixme');
-		});
-
+	it('should verify the function getFilename', () => {
+		expect(converter.getFilename()).toBe('foo');
 	});
 
+	it('should verify the function stashNextCharacterAndAdvanceThePointer', () => {
+		converter.text = 'foo';
+		converter.i = 1;
+		expect(converter.stashNextCharacterAndAdvanceThePointer()).toBe('o');
+	});
 });

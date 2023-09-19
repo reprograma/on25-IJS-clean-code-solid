@@ -14,7 +14,7 @@ Sensor = function() {
 
 Sensor.prototype = {
 
-	popNextPressurePsiValue: function() {
+	popNextPressurePsiValue() {
 		var pressureTelemetryValue = Sensor.samplePressure();
 
 		return Sensor.Offset() + pressureTelemetryValue;

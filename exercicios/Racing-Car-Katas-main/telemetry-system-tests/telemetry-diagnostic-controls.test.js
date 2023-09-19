@@ -1,6 +1,6 @@
 /* globals describe, it */
-var chai = require('chai');
-chai.should();
+var jest = require('jest');
+jest.should();
 
 var TelemetryDiagnosticControls = require('../telemetry-system/telemetry-diagnostic-controls.js');
 

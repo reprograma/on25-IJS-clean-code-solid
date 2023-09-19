@@ -20,7 +20,7 @@ TelemetryClient.prototype = {
 		return min + Math.floor(delta * Math.random());
 	},
 
-	connect: function(telemetryServerConnectionString) {
+	connect(telemetryServerConnectionString) {
 		if (typeof (telemetryServerConnectionString) === 'undefined' || telemetryServerConnectionString === '') {
 			throw 'missing telemetryServerConnectionString parameter';
 		}
@@ -31,11 +31,11 @@ TelemetryClient.prototype = {
 		this._onlineStatus = success;
 	},
 
-	disconnect: function() {
+	disconnect() {
 		this._onlineStatus = false;
 	},
 
-	send: function(message) {
+	send(message) {
 		if (typeof (message) === 'undefined' || message === '') {
 			throw 'missing message parameter';
 		}
@@ -64,7 +64,7 @@ TelemetryClient.prototype = {
 		// here should go the real Send operation (not needed for this exercise)
 	},
 
-	receive: function() {
+	receive() {
 		var message;
 
 		if (typeof (this._diagnosticMessageResult) === 'undefined' || this._diagnosticMessageResult === '') {

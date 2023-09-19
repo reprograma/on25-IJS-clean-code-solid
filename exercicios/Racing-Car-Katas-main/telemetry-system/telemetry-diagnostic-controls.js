@@ -2,7 +2,7 @@ var TelemetryClient = require('./telemetry-client.js');
 
 TelemetryDiagnosticControls = function() {
 
-	this._diagnosticChannelConnectionString = function() { return '*111#'; };
+	this._diagnosticChannelConnectionString = '*111#';
 
 	this._telemetryClient = new TelemetryClient();
 	this._diagnosticInfo = '';
@@ -10,15 +10,15 @@ TelemetryDiagnosticControls = function() {
 
 TelemetryDiagnosticControls.prototype = {
 
-	readDiagnosticInfo: function() {
+	readDiagnosticInfo() {
 		return this._diagnosticInfo;
 	},
 
-	writeDiagnosticInfo: function(newValue) {
+	writeDiagnosticInfo(newValue) {
 		this._diagnosticInfo = newValue;
 	},
 
-	checkTransmission: function() {
+	checkTransmission() {
 
 		this._diagnosticInfo = '';
 

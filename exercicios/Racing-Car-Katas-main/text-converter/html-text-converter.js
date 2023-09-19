@@ -1,4 +1,4 @@
-var fs = require('fs');
+const fs = require('fs');
 
 HtmlTextConverter = function(fullFilenameWithPath) {
 	this._fullFilenameWithPath = fullFilenameWithPath;
@@ -6,17 +6,17 @@ HtmlTextConverter = function(fullFilenameWithPath) {
 
 HtmlTextConverter.prototype = {
 
-	convertToHtml: function() {
+	convertToHtml() {
 
-		var text = fs.readFileSync(this._fullFilenameWithPath).toString();
+		const fileText = fs.readFileSync(this._fullFilenameWithPath).toString();
 
-		var stashNextCharacterAndAdvanceThePointer = function() {
-			var c = text.charAt(i);
-			i += 1;
-			return c;
+		let stashNextCharacterAndAdvanceThePointer = function() {
+			let currentCharacter = fileText.charAt(currentIndex);
+			currentCharacter += 1;
+			return currentCharacter;
 		};
 
-		var addANewLine = function() {
+		let addANewLine = function() {
 			var line = convertedLine.join('');
 			html.push(line);
 			convertedLine = [];
@@ -26,11 +26,11 @@ HtmlTextConverter.prototype = {
 			convertedLine.push(characterToConvert);
 		};
 
-		var i = 0;
+		var currentIndex = 0;
 		var html = [];
 		var convertedLine = [];
 		var characterToConvert = stashNextCharacterAndAdvanceThePointer();
-		while (i <= text.length) {
+		while (currentIndex <= fileText.length) {
 
 			switch (characterToConvert) {
 				case '<':
@@ -56,7 +56,7 @@ HtmlTextConverter.prototype = {
 		return html.join('<br />');
 	},
 
-	getFilename: function() {
+	getFilename() {
 		return this._fullFilenameWithPath;
 	}
 };
